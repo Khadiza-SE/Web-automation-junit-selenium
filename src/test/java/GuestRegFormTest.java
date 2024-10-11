@@ -42,7 +42,6 @@ public class GuestRegFormTest {
 
         //Click the gender radio button
         driver.findElement(By.id("radio_1665627729_Female")).click();
-        Thread.sleep(2000);
         driver.findElement(By.id("user_pass")).sendKeys("*Khafn01171*");
 
         // Date Picker Handling
@@ -51,26 +50,21 @@ public class GuestRegFormTest {
 
         // Scroll to the Date of Birth field
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dateOfBirthField);
-        Thread.sleep(2000);
 
         // Use JavaScript to set the date
         String desiredDate = "1996-12-25";
         ((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('1996-12-25')", dateOfBirthField); // Remove 'readonly' attribute
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value', '" + desiredDate + "')", dateOfBirthField);
 
-        Thread.sleep(3000);
-
         Utils.scroll(driver, 500);
         driver.findElement(By.id("input_box_1665629217")).sendKeys("Bangladeshi");
 
         WebElement phoneElement = driver.findElement(By.xpath("//input[@data-id='phone_1665627880']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", phoneElement);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         //phoneElement.click();
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value', '" + "(323) 232-3232" + "')", phoneElement);
-
-        Thread.sleep(3000);
 
         Utils.scroll(driver, 500);
 
@@ -80,7 +74,7 @@ public class GuestRegFormTest {
 
         Utils.scroll(driver, 1500);
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         //Click on check box (privacy policy)
         driver.findElement(By.id("privacy_policy_1665633140")).click();
@@ -94,8 +88,6 @@ public class GuestRegFormTest {
         // Find the success message element and get its text
         WebElement successMessage = driver.findElement(By.id("ur-submit-message-node"));
         String actualMessage = successMessage.getText();
-
-        Thread.sleep(5000);
 
         // Assert the expected message
         String expectedMessage = "User successfully registered.";
